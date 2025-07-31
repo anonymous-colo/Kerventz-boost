@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255 255 255;
+  --foreground: 15 23 42;
+  --muted: 248 250 252;
+  --muted-foreground: 100 116 139;
+  --popover: 255 255 255;
+  --popover-foreground: 15 23 42;
+  --card: 255 255 255;
+  --card-foreground: 15 23 42;
+  --border: 226 232 240;
+  --input: 226 232 240;
+  --primary: 15 23 42;
+  --primary-foreground: 255 255 255;
+  --secondary: 241 245 249;
+  --secondary-foreground: 15 23 42;
+  --accent: 59 130 246;
+  --accent-foreground: 255 255 255;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --ring: 59 130 246;
+  --radius: 0.75rem;
+
+  /* Custom Kerventz colors - Light theme */
+  --primary-50: 248 250 252;
+  --primary-100: 241 245 249;
+  --primary-200: 226 232 240;
+  --primary-300: 203 213 225;
+  --primary-400: 148 163 184;
+  --primary-500: 100 116 139;
+  --primary-600: 71 85 105;
+  --primary-700: 51 65 85;
+  --primary-800: 30 41 59;
+  --primary-900: 15 23 42;
+  
+  --accent-400: 29 78 216;
+  --accent-500: 59 130 246;
+  --accent-600: 37 99 235;
+  --accent-700: 29 78 216;
+  
+  /* Text colors for light theme */
+  --text-primary: 15 23 42;
+  --text-secondary: 71 85 105;
+  --text-muted: 100 116 139;
+}
+
+.dark {
+  --background: 15 23 42;
+  --foreground: 248 250 252;
+  --muted: 30 41 59;
+  --muted-foreground: 148 163 184;
+  --popover: 30 41 59;
+  --popover-foreground: 248 250 252;
+  --card: 30 41 59;
+  --card-foreground: 248 250 252;
+  --border: 51 65 85;
+  --input: 51 65 85;
+  --primary: 248 250 252;
+  --primary-foreground: 15 23 42;
+  --secondary: 51 65 85;
+  --secondary-foreground: 248 250 252;
+  --accent: 59 130 246;
+  --accent-foreground: 255 255 255;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --ring: 59 130 246;
+  
+  /* Dark theme overrides */
+  --primary-50: 15 23 42;
+  --primary-100: 30 41 59;
+  --primary-200: 51 65 85;
+  --primary-300: 71 85 105;
+  --primary-400: 100 116 139;
+  --primary-500: 148 163 184;
+  --primary-600: 203 213 225;
+  --primary-700: 226 232 240;
+  --primary-800: 241 245 249;
+  --primary-900: 248 250 252;
+  
+  /* Text colors for dark theme */
+  --text-primary: 248 250 252;
+  --text-secondary: 203 213 225;
+  --text-muted: 148 163 184;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Custom glassmorphism utility */
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  .dark .glassmorphism {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-wave {
+    animation: wave 2s ease-in-out infinite;
+  }
+  
+  .counter-animation {
+    animation: countUp 2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}
+
+/* Force high contrast text visibility */
+.text-force-visible {
+  color: rgb(15, 23, 42) !important;
+}
+
+.dark .text-force-visible {
+  color: rgb(248, 250, 252) !important;
+}
+
+.text-force-secondary {
+  color: rgb(71, 85, 105) !important;
+}
+
+.dark .text-force-secondary {
+  color: rgb(203, 213, 225) !important;
+}
